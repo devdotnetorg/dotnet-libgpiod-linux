@@ -43,6 +43,42 @@ chmod +x autogen.sh
 make
 make install
 # create ln
+echo "============Creating symbolic links============"
+#
+if [ -h /usr/bin/gpiodetect ]; then
+	rm /usr/bin/gpiodetect    
+fi
+if [ -h /usr/bin/gpiofind ]; then
+	rm /usr/bin/gpiofind    
+fi
+if [ -h /usr/bin/gpioget ]; then
+	rm /usr/bin/gpioget    
+fi
+if [ -h /usr/bin/gpioinfo ]; then
+	rm /usr/bin/gpioinfo    
+fi
+if [ -h /usr/bin/gpiomon ]; then
+	rm /usr/bin/gpiomon    
+fi
+if [ -h /usr/bin/gpioset ]; then
+	rm /usr/bin/gpioset    
+fi
+if [ -h /usr/lib/aarch64-linux-gnu/libgpiod.a ]; then
+	rm /usr/lib/aarch64-linux-gnu/libgpiod.a    
+fi
+if [ -h /usr/lib/aarch64-linux-gnu/libgpiod.la ]; then
+	rm /usr/lib/aarch64-linux-gnu/libgpiod.la    
+fi
+if [ -h /usr/lib/aarch64-linux-gnu/libgpiod.so ]; then
+	rm /usr/lib/aarch64-linux-gnu/libgpiod.so    
+fi
+if [ -h /usr/lib/aarch64-linux-gnu/libgpiod.so.2 ]; then
+	rm /usr/lib/aarch64-linux-gnu/libgpiod.so.2    
+fi
+if [ -h /usr/lib/aarch64-linux-gnu/libgpiod.so.2.2.2 ]; then
+	rm /usr/lib/aarch64-linux-gnu/libgpiod.so.2.2.2    
+fi
+#
 ln -s $INSTALLPATH/bin/gpiodetect /usr/bin/gpiodetect
 ln -s $INSTALLPATH/bin/gpiofind /usr/bin/gpiofind
 ln -s $INSTALLPATH/bin/gpioget /usr/bin/gpioget
@@ -54,6 +90,7 @@ ln -s $INSTALLPATH/lib/libgpiod.la /usr/lib/aarch64-linux-gnu/libgpiod.la
 ln -s $INSTALLPATH/lib/libgpiod.so.2.2.2 /usr/lib/aarch64-linux-gnu/libgpiod.so
 ln -s $INSTALLPATH/lib/libgpiod.so.2.2.2 /usr/lib/aarch64-linux-gnu/libgpiod.so.2
 ln -s $INSTALLPATH/lib/libgpiod.so.2.2.2 /usr/lib/aarch64-linux-gnu/libgpiod.so.2.2.2
+#
 cp -R $INSTALLPATH/share/ /usr/lib/aarch64-linux-gnu/
 echo "==============================================="
 echo "Successfully"
