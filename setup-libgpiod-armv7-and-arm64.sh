@@ -1,6 +1,6 @@
 #!/bin/bash
 # Setup libgpiod for ARM64 and ARM32
-# Script version: 2.0
+# Script version: 2.1
 # C library and tools for interacting with the linux GPIO character device
 # https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/
 # $1 - library release number: 1.6.3
@@ -20,7 +20,7 @@ ARMBIT=$(uname -m) #aarch64 or armv7l
 #
 if [ -z $LIBGPIOD_VERSION ]; then
 	echo "Error: library version not specified"
-	exit;
+	exit 1;
 fi
 
 if [ -z $INSTALLPATH ]; then

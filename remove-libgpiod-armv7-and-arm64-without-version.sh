@@ -3,25 +3,19 @@
 # Script version: 2.1
 # C library and tools for interacting with the linux GPIO character device
 # https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/
-# $1 - library release number: 1.6.3
-# $2 - library installation folder (default : /usr/share/libgpiod)
+# $1 - library installation folder (default : /usr/share/libgpiod)
 #=================================================================
-# Run: sudo ./remove-libgpiod-armv7-and-arm64 1.6.3 /usr/share/libgpiod
+# Run: sudo ./remove-libgpiod-armv7-and-arm64-without-version /usr/share/libgpiod
 # or
-# Run: sudo ./remove-libgpiod-armv7-and-arm64 1.6.3
+# Run: sudo ./remove-libgpiod-armv7-and-arm64-without-version
 #=================================================================
 # DevDotNet.ORG <anton@devdotnet.org> MIT License
 
 set -e
 #
-LIBGPIOD_VERSION="$1"
-INSTALLPATH="$2"
+INSTALLPATH="$1"
 ARMBIT=$(uname -m) #aarch64 or armv7l
 #
-if [ -z $LIBGPIOD_VERSION ]; then
-	echo "Error: library version not specified"
-	exit 1;
-fi
 
 if [ -z $INSTALLPATH ]; then
 	INSTALLPATH=/usr/share/libgpiod
@@ -29,15 +23,11 @@ fi
 
 echo "==============================================="
 echo "Removing Libgpiod library" 
-echo "Removing the Libgpiod library version:" $LIBGPIOD_VERSION
 echo "Library installation path:" $INSTALLPATH
 echo "==============================================="
 echo ""
 echo "=====================Remove====================="
 #
-if [ -d ~/libgpiod-$LIBGPIOD_VERSION ]; then
-	rm -rfv ~/libgpiod-$LIBGPIOD_VERSION    
-fi
 if [ -d $INSTALLPATH ]; then
 	rm -rfv $INSTALLPATH    
 fi
